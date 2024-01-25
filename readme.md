@@ -9,3 +9,7 @@ Nuestra misión es proporcionar soluciones de software de calidad excepcional, i
 ## Visión
 
 Nuestra visión es ser líderes en el campo del desarrollo de software, reconocidos por nuestra capacidad para brindar soluciones innovadoras y de calidad. Nos esforzamos por ser el socio preferido de las empresas que buscan soluciones tecnológicas avanzadas y por ser referentes en la creación de software que transformen la forma en que las personas y las empresas interactúan con la tecnología. 
+
+## Contacto
+
+jcjimenez@kodinc.dev
