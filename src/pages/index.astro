@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import Section from '../components/Section.astro';
 import CtaButton from '../components/CtaButton.astro';
+import HeroIntro from '../components/motion/HeroIntro.tsx';
+import Reveal from '../components/motion/Reveal.tsx';
 
 const pageTitle =
 	'kodinc | Software a medida, SaaS y sistemas para empresas en México';
@@ -13,411 +15,255 @@ const mailDemo =
 	'mailto:hola@kodinc.dev?subject=Quiero%20agendar%20una%20demo%20con%20Kodinc%20Dev&body=Hola%2C%20me%20interesa%20una%20demo.%20Mi%20negocio%20es%3A%20';
 const mailInfo =
 	'mailto:hola@kodinc.dev?subject=Solicitud%20de%20informaci%C3%B3n%20Kodinc%20Dev&body=Cu%C3%A9ntanos%20tu%20negocio%20y%20qu%C3%A9%20te%20gustar%C3%ADa%20resolver%3A%20';
+
+const card =
+	'rounded-2xl border border-white/[0.08] bg-surface-elevated p-5 transition duration-200 hover:-translate-y-0.5 hover:border-white/[0.14] hover:shadow-lg hover:shadow-black/35 md:p-6';
+const cardTitle = 'm-0 text-base font-bold leading-snug text-text';
+const cardBody = 'mt-2 text-[0.95rem] leading-relaxed text-muted';
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
 	<SiteHeader />
 	<main id="contenido">
-		<section class="hero" aria-labelledby="hero-titulo">
-			<div class="hero-inner">
-				<p class="hero-kicker">Para dueños de negocio que ya no quieren apagar incendios con WhatsApp y Excel</p>
-				<h1 id="hero-titulo" class="hero-title">
-					Te ayudo a organizar tu negocio con <span class="gradient-text">software que sí se usa</span>
-				</h1>
-				<p class="hero-lead">
-					Somos <strong>kodinc</strong>. Hacemos <strong>desarrollo web en México</strong> y software que ordena citas,
-					inventarios y equipos — para que recuperes tiempo, clientes y control. También conectamos tu operación con trámites
-					digitales del gobierno cuando aplica, sin complicarte la vida.
-				</p>
-				<p class="hero-slogan" aria-hidden="true">Tecnología que conecta</p>
-				<div class="hero-actions">
-					<CtaButton href={mailDemo} label="Agenda una demo" />
-					<CtaButton href={mailInfo} variant="secondary" label="Solicita información" />
+		<section
+			class="bg-[radial-gradient(ellipse_80%_60%_at_50%_-20%,rgba(124,92,255,0.35),transparent)] px-5 pb-16 pt-12 md:pb-20 md:pt-16"
+			aria-labelledby="hero-titulo"
+		>
+			<HeroIntro client:idle>
+				<div class="mx-auto max-w-3xl text-center">
+					<p
+						class="mb-4 text-xs font-bold uppercase tracking-[0.08em] text-accent-muted md:text-sm"
+					>
+						Para dueños de negocio que ya no quieren apagar incendios con WhatsApp y Excel
+					</p>
+					<h1
+						id="hero-titulo"
+						class="mb-5 text-balance text-3xl font-extrabold leading-[1.12] tracking-tight text-text sm:text-4xl md:text-[2.75rem]"
+					>
+						Te ayudo a organizar tu negocio con{' '}
+						<span
+							class="bg-gradient-to-br from-[#7c5cff] via-accent-soft to-accent-soft bg-clip-text text-transparent"
+						>
+							software que sí se usa
+						</span>
+					</h1>
+					<p
+						class="mb-2 text-left text-lg leading-relaxed text-muted md:text-center md:text-[1.125rem]"
+					>
+						Somos <strong class="font-semibold text-text">kodinc</strong>. Hacemos{' '}
+						<strong class="font-semibold text-text">desarrollo web en México</strong> y software que ordena citas, inventarios
+						y equipos — para que recuperes tiempo, clientes y control. También conectamos tu operación con trámites digitales
+						del gobierno cuando aplica, sin complicarte la vida.
+					</p>
+					<p class="mb-6 text-sm italic text-muted" aria-hidden="true">Tecnología que conecta</p>
+					<div class="mb-4 flex flex-wrap justify-center gap-4">
+						<CtaButton href={mailDemo} label="Agenda una demo" />
+						<CtaButton href={mailInfo} variant="secondary" label="Solicita información" />
+					</div>
+					<p class="m-0 text-xs text-muted md:text-sm">
+						Respuesta en horario laboral · Proyectos en México · Lenguaje claro, sin tecnicismos innecesarios
+					</p>
 				</div>
-				<p class="hero-micro">
-					Respuesta en horario laboral · Proyectos en México · Lenguaje claro, sin tecnicismos innecesarios
-				</p>
-			</div>
+			</HeroIntro>
 		</section>
 
 		<Section id="problema" eyebrow="Primero lo doloroso" title="Si esto te suena, no estás solo">
-			<ul class="pain-list">
-				<li>
-					<h3 class="h3">Todo vive en chats y hojas de cálculo</h3>
-					<p>Citas, pagos y seguimiento mezclados en WhatsApp. Cada empleado tiene “su” Excel y nadie confía en los números.</p>
+			<ul class="m-0 grid list-none gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+				<li class={card}>
+					<h3 class={cardTitle}>Todo vive en chats y hojas de cálculo</h3>
+					<p class={cardBody}>
+						Citas, pagos y seguimiento mezclados en WhatsApp. Cada empleado tiene “su” Excel y nadie confía en los números.
+					</p>
 				</li>
-				<li>
-					<h3 class="h3">Pierdes clientes por demoras o errores</h3>
-					<p>Se te pasan citas, promesas quedan en el aire y la experiencia del cliente se siente amateur aunque tu servicio sea bueno.</p>
+				<li class={card}>
+					<h3 class={cardTitle}>Pierdes clientes por demoras o errores</h3>
+					<p class={cardBody}>
+						Se te pasan citas, promesas quedan en el aire y la experiencia del cliente se siente amateur aunque tu servicio
+						sea bueno.
+					</p>
 				</li>
-				<li>
-					<h3 class="h3">Desorden operativo = dinero tirado</h3>
-					<p>Horas en coordinación manual, reprocesos y tensiones con tu equipo. Tú sabes que necesitas orden; solo falta el sistema que lo sostenga.</p>
+				<li class:list={[card, 'sm:col-span-2 lg:col-span-1']}>
+					<h3 class={cardTitle}>Desorden operativo = dinero tirado</h3>
+					<p class={cardBody}>
+						Horas en coordinación manual, reprocesos y tensiones con tu equipo. Tú sabes que necesitas orden; solo falta el
+						sistema que lo sostenga.
+					</p>
 				</li>
 			</ul>
-			<div class="inline-cta">
+			<div class="mt-8">
 				<CtaButton href={mailDemo} label="Quiero ordenar mi operación" />
 			</div>
 		</Section>
 
-		<Section id="solucion" eyebrow="Qué hace kodinc" title="Un solo lugar donde corra tu negocio (sin volverte experto en tecnología)">
-			<p class="lead">
+		<Section
+			id="solucion"
+			eyebrow="Qué hace kodinc"
+			title="Un solo lugar donde corra tu negocio (sin volverte experto en tecnología)"
+		>
+			<p class="m-0 max-w-4xl text-[1.0625rem] leading-relaxed text-muted">
 				No vendemos “desarrollo” por kilo. Escuchamos cómo trabajas hoy, definimos el flujo que quieres mañana y construimos
-				<strong> software a medida, SaaS o integraciones</strong> que tu equipo sí adopta. Consultoría incluida para que tomes
-				buenas decisiones antes de programar una sola línea.
+				<strong class="font-semibold text-text"> software a medida, SaaS o integraciones</strong> que tu equipo sí adopta.
+				Consultoría incluida para que tomes buenas decisiones antes de programar una sola línea.
 			</p>
-			<div class="pillars">
-				<article class="pillar">
-					<h3 class="h3">Sistemas a medida que pegan con tu proceso</h3>
-					<p>Tableros, automatizaciones y pantallas alineadas a cómo realmente trabajan tus personas.</p>
+			<div class="grid gap-4 md:grid-cols-3 md:gap-5">
+				<article class={card}>
+					<h3 class={cardTitle}>Sistemas a medida que pegan con tu proceso</h3>
+					<p class={cardBody}>
+						Tableros, automatizaciones y pantallas alineadas a cómo realmente trabajan tus personas.
+					</p>
 				</article>
-				<article class="pillar">
-					<h3 class="h3">Producto tipo SaaS cuando quieres escalar</h3>
-					<p>Si tu modelo es recurrente o multi-sede, pensamos en roles, permisos y crecimiento desde el inicio.</p>
+				<article class={card}>
+					<h3 class={cardTitle}>Producto tipo SaaS cuando quieres escalar</h3>
+					<p class={cardBody}>
+						Si tu modelo es recurrente o multi-sede, pensamos en roles, permisos y crecimiento desde el inicio.
+					</p>
 				</article>
-				<article class="pillar">
-					<h3 class="h3">Integración con lo que ya usas — y con el gobierno</h3>
-					<p>Conectamos con tus herramientas actuales y, si el negocio lo requiere, con <a href="#gobierno">plataformas de identidad digital</a> (estilo Llave MX) de forma clara y guiada.</p>
+				<article class={card}>
+					<h3 class={cardTitle}>Integración con lo que ya usas — y con el gobierno</h3>
+					<p class={cardBody}>
+						Conectamos con tus herramientas actuales y, si el negocio lo requiere, con{' '}
+						<a class="font-medium text-accent-muted hover:text-text" href="#gobierno">plataformas de identidad digital</a> (estilo
+						Llave MX) de forma clara y guiada.
+					</p>
 				</article>
 			</div>
 		</Section>
 
 		<Section id="beneficios" eyebrow="Qué ganas" title="Beneficios que tu contador y tus clientes van a notar">
-			<ul class="benefits">
-				<li><strong>Menos caos, más claridad:</strong> un solo flujo para citas, cobros o expedientes — sin depender de mil chats.</li>
-				<li><strong>Más ingresos retenidos:</strong> menos fugas por olvidos, dobles reservas o seguimiento pobre.</li>
-				<li><strong>Equipo alineado:</strong> cada quien ve lo que le toca; tú ves el tablero del negocio.</li>
-				<li><strong>Tecnología que no te avergüenza:</strong> experiencia profesional para tus clientes y proveedores.</li>
-				<li><strong>Acompañamiento en español:</strong> explicamos opciones como negocio, no como manual de ingeniería.</li>
+			<ul class="m-0 max-w-3xl list-disc space-y-3 pl-5 text-muted marker:text-accent-muted">
+				<li>
+					<strong class="font-semibold text-text">Menos caos, más claridad:</strong> un solo flujo para citas, cobros o
+					expedientes — sin depender de mil chats.
+				</li>
+				<li>
+					<strong class="font-semibold text-text">Más ingresos retenidos:</strong> menos fugas por olvidos, dobles reservas o
+					seguimiento pobre.
+				</li>
+				<li>
+					<strong class="font-semibold text-text">Equipo alineado:</strong> cada quien ve lo que le toca; tú ves el tablero del
+					negocio.
+				</li>
+				<li>
+					<strong class="font-semibold text-text">Tecnología que no te avergüenza:</strong> experiencia profesional para tus
+					clientes y proveedores.
+				</li>
+				<li>
+					<strong class="font-semibold text-text">Acompañamiento en español:</strong> explicamos opciones como negocio, no
+					como manual de ingeniería.
+				</li>
 			</ul>
 		</Section>
 
 		<Section id="casos" eyebrow="Dónde encaja" title="Casos de uso reales (consultorios, educación, empresas)">
-			<div class="cases">
-				<article class="case-card">
-					<h3 class="h3">Consultorios y clínicas</h3>
-					<p>
-						<strong>Sistema de citas</strong>, historial, recordatorios y cobros. Ideal si hoy vives en papel y mensajes. Menos
-						no-shows, más control de agenda.
+			<div class="grid gap-4 md:grid-cols-3 md:gap-5">
+				<article class={card}>
+					<h3 class={cardTitle}>Consultorios y clínicas</h3>
+					<p class={cardBody}>
+						<strong class="text-text">Sistema de citas</strong>, historial, recordatorios y cobros. Ideal si hoy vives en papel
+						y mensajes. Menos no-shows, más control de agenda.
 					</p>
 				</article>
-				<article class="case-card">
-					<h3 class="h3">Educación y academias</h3>
-					<p>
+				<article class={card}>
+					<h3 class={cardTitle}>Educación y academias</h3>
+					<p class={cardBody}>
 						Inscripciones, grupos, pagos y comunicación con padres o alumnos. Menos Excel, más tiempo para enseñar.
 					</p>
 				</article>
-				<article class="case-card">
-					<h3 class="h3">Empresas de servicios y operación mixta</h3>
-					<p>
-						<strong>Software para empresas</strong> con flujos propios: logística ligera, cotizaciones, expedientes,
-						conciliación. Lo que hoy te quita fines de semana.
+				<article class={card}>
+					<h3 class={cardTitle}>Empresas de servicios y operación mixta</h3>
+					<p class={cardBody}>
+						<strong class="text-text">Software para empresas</strong> con flujos propios: logística ligera, cotizaciones,
+						expedientes, conciliación. Lo que hoy te quita fines de semana.
 					</p>
 				</article>
 			</div>
 		</Section>
 
 		<Section id="gobierno" eyebrow="Diferenciador" title="Integración con identidad digital y trámites — sin marearte">
-			<p class="lead">
-				A veces tu negocio necesita conectarse con <strong>plataformas gubernamentales</strong> o esquemas de
-				<strong>identidad digital</strong> parecidos a <strong>Llave MX</strong>. Ahí muchos se atoran por normas, llaves y
-				documentación.
+			<p class="m-0 max-w-4xl text-[1.0625rem] leading-relaxed text-muted">
+				A veces tu negocio necesita conectarse con <strong class="font-semibold text-text">plataformas gubernamentales</strong> o esquemas de
+				<strong class="font-semibold text-text">identidad digital</strong> parecidos a <strong class="font-semibold text-text">Llave MX</strong>. Ahí
+				muchos se atoran por normas, llaves y documentación.
 			</p>
-			<p class="lead">
-				En <strong>kodinc</strong> te llevamos de la mano: integramos lo necesario en tu sistema o portal, explicamos qué
+			<p class="m-0 max-w-4xl text-[1.0625rem] leading-relaxed text-muted">
+				En <strong class="font-semibold text-text">kodinc</strong> te llevamos de la mano: integramos lo necesario en tu sistema o portal, explicamos qué
 				pide cada etapa y cuidamos seguridad y buenas prácticas — <em>sin convertir tu landing en un folleto legal</em>. Si tu caso
 				no aplica, no pagas complejidad que no necesitas.
 			</p>
-			<div class="inline-cta">
+			<div class="mt-2">
 				<CtaButton href={mailInfo} label="Platicar mi caso con integraciones" />
 			</div>
 		</Section>
 
 		<Section id="testimonios" eyebrow="Voces" title="Lo que dicen negocios como el tuyo (ejemplos)">
-			<p class="disclaimer">
-				Los siguientes testimonios son <strong>ilustrativos</strong> para mostrar el tipo de resultados que buscamos; cuando
-				tengamos casos publicables con tu autorización, los reemplazamos por historias verificables.
+			<p class="m-0 mb-6 max-w-3xl text-sm text-muted">
+				Los siguientes testimonios son <strong class="text-text">ilustrativos</strong> para mostrar el tipo de resultados que
+				buscamos; cuando tengamos casos publicables con tu autorización, los reemplazamos por historias verificables.
 			</p>
-			<div class="quotes">
-				<blockquote class="quote">
-					<p>
+			<div class="grid gap-4 lg:grid-cols-3 lg:gap-5">
+				<blockquote class={card}>
+					<p class="mb-3 text-[0.95rem] italic leading-relaxed text-text">
 						“Pasamos de coordinar 4 WhatsApp a un solo tablero de citas. En dos meses bajaron las confusiones y recuperé
 						horas de la semana.”
 					</p>
-					<footer>— Directora de clínica dental, <cite>Ciudad de México</cite></footer>
+					<footer class="text-xs text-muted">
+						— Directora de clínica dental, <cite class="not-italic">Ciudad de México</cite>
+					</footer>
 				</blockquote>
-				<blockquote class="quote">
-					<p>
+				<blockquote class={card}>
+					<p class="mb-3 text-[0.95rem] italic leading-relaxed text-text">
 						“Necesitábamos un sistema para empresas que no fuera genérico. Nos entendieron en la primera llamada y el equipo
 						adoptó el flujo en semanas.”
 					</p>
-					<footer>— CEO, empresa de servicios B2B, <cite>Monterrey</cite></footer>
+					<footer class="text-xs text-muted">
+						— CEO, empresa de servicios B2B, <cite class="not-italic">Monterrey</cite>
+					</footer>
 				</blockquote>
-				<blockquote class="quote">
-					<p>
+				<blockquote class={card}>
+					<p class="mb-3 text-[0.95rem] italic leading-relaxed text-text">
 						“La parte gubernamental nos daba miedo. Nos dijeron qué integrar, qué no, y cerramos el trámite sin dramas.”
 					</p>
-					<footer>— Fundador, startup regulada, <cite>Guadalajara</cite></footer>
+					<footer class="text-xs text-muted">
+						— Fundador, startup regulada, <cite class="not-italic">Guadalajara</cite>
+					</footer>
 				</blockquote>
 			</div>
 		</Section>
 
-		<section id="contacto" class="final-cta" aria-labelledby="contacto-titulo">
-			<div class="final-inner">
-				<h2 id="contacto-titulo" class="final-title">Hablemos. En una demo te muestro cómo se vería tu flujo ordenado.</h2>
-				<p class="final-copy">
-					Escríbenos y cuéntanos qué estás haciendo hoy (aunque sea con Excel). Respondemos con siguiente paso claro: demo,
-					propuesta o referidos honestos si no somos el fit.
-				</p>
-				<div class="hero-actions">
-					<CtaButton href={mailDemo} label="Agenda una demo" />
-					<CtaButton href={mailInfo} variant="secondary" label="Solicita información por correo" />
+		<section
+			id="contacto"
+			class="border-t border-white/[0.08] bg-gradient-to-b from-surface-elevated to-surface px-5 py-16 md:py-20"
+			aria-labelledby="contacto-titulo"
+		>
+			<Reveal client:visible>
+				<div class="mx-auto max-w-xl text-center">
+					<h2
+						id="contacto-titulo"
+						class="mb-4 text-balance text-2xl font-extrabold leading-tight tracking-tight text-text md:text-3xl"
+					>
+						Hablemos. En una demo te muestro cómo se vería tu flujo ordenado.
+					</h2>
+					<p class="m-0 text-muted">
+						Escríbenos y cuéntanos qué estás haciendo hoy (aunque sea con Excel). Respondemos con siguiente paso claro: demo,
+						propuesta o referidos honestos si no somos el fit.
+					</p>
+					<div class="mt-8 flex flex-wrap justify-center gap-4">
+						<CtaButton href={mailDemo} label="Agenda una demo" />
+						<CtaButton href={mailInfo} variant="secondary" label="Solicita información por correo" />
+					</div>
+					<address class="mt-8 text-sm not-italic text-muted">
+						<strong class="text-text">kodinc</strong> · <a class="text-accent-muted hover:text-text" href="mailto:hola@kodinc.dev">hola@kodinc.dev</a> ·{' '}
+						<a class="text-accent-muted hover:text-text" href="https://kodinc.dev/">kodinc.dev</a>
+					</address>
 				</div>
-				<address class="contact-meta">
-					<strong>kodinc</strong> · <a href="mailto:hola@kodinc.dev">hola@kodinc.dev</a> ·{' '}
-					<a href="https://kodinc.dev/">kodinc.dev</a>
-				</address>
-			</div>
+			</Reveal>
 		</section>
 
-		<footer class="site-footer" role="contentinfo">
-			<div class="footer-inner">
-				<p>
-					© {new Date().getFullYear()} kodinc. Tecnología que conecta ·{' '}
-					<a href="/">Inicio</a>
-				</p>
-			</div>
+		<footer class="border-t border-white/[0.08] px-5 py-8 pb-12" role="contentinfo">
+			<p class="m-0 text-center text-sm text-muted">
+				© {new Date().getFullYear()} kodinc. Tecnología que conecta ·{' '}
+				<a class="text-accent-muted hover:text-text" href="/">Inicio</a>
+			</p>
 		</footer>
 	</main>
 </Layout>
-
-<style>
-	.hero {
-		padding: 3rem 1.25rem 4rem;
-		background:
-			radial-gradient(ellipse 80% 60% at 50% -20%, rgba(124, 92, 255, 0.35), transparent),
-			var(--surface);
-	}
-	.hero-inner {
-		max-width: 48rem;
-		margin: 0 auto;
-		text-align: center;
-	}
-	.hero-kicker {
-		font-size: 0.8rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: rgb(var(--accent-muted));
-		margin: 0 0 1rem;
-	}
-	.hero-title {
-		font-size: clamp(1.85rem, 5.5vw, 2.75rem);
-		font-weight: 800;
-		line-height: 1.12;
-		letter-spacing: -0.04em;
-		margin: 0 0 1.25rem;
-	}
-	.gradient-text {
-		background: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	.hero-lead {
-		font-size: 1.125rem;
-		color: var(--text-muted);
-		margin: 0 0 0.75rem;
-		text-align: left;
-	}
-	.hero-slogan {
-		font-size: 0.9rem;
-		color: var(--text-muted);
-		font-style: italic;
-		margin: 0 0 1.5rem;
-	}
-	.hero-lead strong,
-	.lead strong {
-		color: var(--text);
-	}
-	.hero-actions {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-		justify-content: center;
-		margin: 1.75rem 0 1rem;
-	}
-	.hero-micro {
-		font-size: 0.8rem;
-		color: var(--text-muted);
-		margin: 0;
-	}
-	.lead {
-		font-size: 1.0625rem;
-		color: var(--text-muted);
-		margin: 0;
-		max-width: 56rem;
-	}
-	.lead a {
-		color: rgb(var(--accent-muted));
-	}
-	.pain-list {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		display: grid;
-		gap: 1.5rem;
-	}
-	@media (min-width: 640px) {
-		.pain-list {
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
-	.pain-list p {
-		margin: 0.35rem 0 0;
-		color: var(--text-muted);
-		font-size: 0.95rem;
-	}
-	.pillars {
-		display: grid;
-		gap: 1.25rem;
-	}
-	@media (min-width: 768px) {
-		.pillars {
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
-	.pillar {
-		background: var(--surface-elevated);
-		border: 1px solid var(--border);
-		border-radius: 12px;
-		padding: 1.25rem;
-	}
-	.pillar p {
-		margin: 0.5rem 0 0;
-		font-size: 0.95rem;
-		color: var(--text-muted);
-	}
-	.benefits {
-		margin: 0;
-		padding-left: 1.2rem;
-		max-width: 48rem;
-		color: var(--text-muted);
-	}
-	.benefits li {
-		margin-bottom: 0.65rem;
-	}
-	.benefits strong {
-		color: var(--text);
-	}
-	.cases {
-		display: grid;
-		gap: 1rem;
-	}
-	@media (min-width: 768px) {
-		.cases {
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
-	.case-card {
-		background: var(--surface-elevated);
-		border-radius: 12px;
-		padding: 1.25rem;
-		border: 1px solid var(--border);
-	}
-	.case-card p {
-		margin: 0.5rem 0 0;
-		font-size: 0.95rem;
-		color: var(--text-muted);
-	}
-	.h3 {
-		font-size: 1.05rem;
-		font-weight: 700;
-		margin: 0;
-		line-height: 1.3;
-	}
-	.inline-cta {
-		margin-top: 1.5rem;
-	}
-	.disclaimer {
-		font-size: 0.85rem;
-		color: var(--text-muted);
-		max-width: 48rem;
-		margin: 0 0 1.5rem;
-	}
-	.quotes {
-		display: grid;
-		gap: 1rem;
-	}
-	@media (min-width: 900px) {
-		.quotes {
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
-	.quote {
-		margin: 0;
-		background: var(--surface-elevated);
-		border-radius: 12px;
-		padding: 1.25rem;
-		border: 1px solid var(--border);
-	}
-	.quote p {
-		margin: 0 0 0.75rem;
-		font-size: 0.95rem;
-		font-style: italic;
-		color: var(--text);
-	}
-	.quote footer {
-		font-size: 0.8rem;
-		color: var(--text-muted);
-	}
-	.quote cite {
-		font-style: normal;
-	}
-	.final-cta {
-		padding: 4rem 1.25rem;
-		background: linear-gradient(180deg, var(--surface-elevated), var(--surface));
-		border-top: 1px solid var(--border);
-	}
-	.final-inner {
-		max-width: 40rem;
-		margin: 0 auto;
-		text-align: center;
-	}
-	.final-title {
-		font-size: clamp(1.35rem, 3.5vw, 1.75rem);
-		font-weight: 800;
-		line-height: 1.25;
-		margin: 0 0 1rem;
-	}
-	.final-copy {
-		color: var(--text-muted);
-		margin: 0;
-	}
-	.contact-meta {
-		margin: 2rem 0 0;
-		font-style: normal;
-		font-size: 0.9rem;
-		color: var(--text-muted);
-	}
-	.contact-meta a {
-		color: rgb(var(--accent-muted));
-	}
-	.site-footer {
-		padding: 1.5rem 1.25rem 2.5rem;
-		border-top: 1px solid var(--border);
-	}
-	.footer-inner {
-		max-width: 72rem;
-		margin: 0 auto;
-		text-align: center;
-	}
-	.site-footer p {
-		margin: 0;
-		font-size: 0.85rem;
-		color: var(--text-muted);
-	}
-	.site-footer a {
-		color: rgb(var(--accent-muted));
-	}
-</style>

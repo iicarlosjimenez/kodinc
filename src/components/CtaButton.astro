@@ -6,43 +6,18 @@ interface Props {
 }
 
 const { href, variant = 'primary', label } = Astro.props;
+
+const base =
+	'inline-flex min-h-[3rem] shrink-0 items-center justify-center rounded-full px-6 py-3.5 text-center text-base font-bold no-underline transition duration-150 ease-out hover:scale-[1.03] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-accent-muted';
+
+const variants = {
+	primary:
+		'bg-gradient-to-br from-[#7c5cff] via-[#7c5cff] to-[#38bdf8] text-[#0c0d12] shadow-lg shadow-black/20 hover:brightness-105',
+	secondary:
+		'border-2 border-white/10 bg-transparent text-text hover:border-white/25 hover:bg-white/[0.03]',
+};
 ---
 
-<a class:list={['cta', variant]} href={href}>
+<a class:list={[base, variants[variant]]} href={href}>
 	{label}
 </a>
-
-<style>
-	.cta {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0.85rem 1.35rem;
-		border-radius: 999px;
-		font-weight: 700;
-		font-size: 1rem;
-		text-decoration: none;
-		transition: transform 0.15s ease, filter 0.15s ease;
-		border: 2px solid transparent;
-	}
-	.cta:focus-visible {
-		outline: 2px solid rgb(var(--accent-muted));
-		outline-offset: 3px;
-	}
-	.cta:hover {
-		transform: translateY(-1px);
-		filter: brightness(1.06);
-	}
-	.primary {
-		color: #0c0d12;
-		background: var(--accent-gradient);
-	}
-	.secondary {
-		color: var(--text);
-		background: transparent;
-		border-color: var(--border);
-	}
-	.secondary:hover {
-		border-color: rgba(255, 255, 255, 0.25);
-	}
-</style>

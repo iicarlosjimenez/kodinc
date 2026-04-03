@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
 	title: string;
 	description: string;
@@ -45,69 +47,25 @@ const ogUrl = new URL(ogImage, siteUrl).href;
 			serviceType: ['Desarrollo de software a medida', 'SaaS', 'Integración con identidad digital gubernamental'],
 		})} />
 	</head>
-	<body>
-		<a href="#contenido" class="skip-link">Saltar al contenido</a>
+	<body class="bg-surface text-text">
+		<a
+			href="#contenido"
+			class="absolute left-[-999px] top-0 z-[100] rounded-br-lg bg-[#7c5cff] px-4 py-3 font-semibold text-white focus:left-0 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0d12]"
+		>
+			Saltar al contenido
+		</a>
 		<slot />
 	</body>
 </html>
 
 <style is:global>
-	:root {
-		--accent: 124, 92, 255;
-		--accent-muted: 180, 165, 255;
-		--accent-gradient: linear-gradient(120deg, rgb(124, 92, 255), rgb(56, 189, 248));
-		--surface: #0c0d12;
-		--surface-elevated: #14161f;
-		--border: rgba(255, 255, 255, 0.08);
-		--text: #f4f4f5;
-		--text-muted: #a1a1aa;
-	}
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
-	html {
-		font-family:
-			system-ui,
-			-apple-system,
-			'Segoe UI',
-			Roboto,
-			Ubuntu,
-			sans-serif;
-		background: var(--surface);
-		color: var(--text);
-		scroll-behavior: smooth;
-	}
-	body {
-		margin: 0;
-		min-height: 100vh;
-		line-height: 1.6;
-	}
-	.skip-link {
-		position: absolute;
-		left: -999px;
-		top: 0;
-		padding: 0.75rem 1rem;
-		background: rgb(var(--accent));
-		color: #fff;
-		text-decoration: none;
-		border-radius: 0 0 8px 0;
-		z-index: 100;
-		font-weight: 600;
-	}
-	.skip-link:focus {
-		left: 0;
-		outline: 2px solid #fff;
-		outline-offset: 2px;
-	}
-	code {
-		font-family: ui-monospace, Menlo, Monaco, monospace;
-		font-size: 0.9em;
-	}
 	@media (prefers-reduced-motion: reduce) {
 		html {
 			scroll-behavior: auto;
 		}
+	}
+	code {
+		font-family: ui-monospace, Menlo, Monaco, monospace;
+		font-size: 0.9em;
 	}
 </style>
