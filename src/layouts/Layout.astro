@@ -1,52 +1,113 @@
 ---
 interface Props {
 	title: string;
+	description: string;
+	canonicalPath?: string;
+	ogImage?: string;
 }
 
-const { title } = Astro.props;
+const siteUrl = Astro.site ?? new URL('https://kodinc.dev');
+const canonical = new URL(Astro.props.canonicalPath ?? Astro.url.pathname, siteUrl).href;
+const { title, description, ogImage = '/favicon.svg' } = Astro.props;
+const ogUrl = new URL(ogImage, siteUrl).href;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es-MX">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={canonical} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:locale" content="es_MX" />
+		<meta property="og:image" content={ogUrl} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<!-- NO ELIMINAR facebook-domain-verification -->
 		<meta name="facebook-domain-verification" content="na0tc48vkdodfv96hbmybtlaot72za" />
 		<title>{title}</title>
+		<script type="application/ld+json" set:html={JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'ProfessionalService',
+			name: 'kodinc',
+			slogan: 'Tecnología que conecta',
+			description,
+			url: String(siteUrl).replace(/\/$/, '') || canonical,
+			areaServed: { '@type': 'Country', name: 'México' },
+			serviceType: ['Desarrollo de software a medida', 'SaaS', 'Integración con identidad digital gubernamental'],
+		})} />
 	</head>
 	<body>
+		<a href="#contenido" class="skip-link">Saltar al contenido</a>
 		<slot />
 	</body>
 </html>
+
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		--accent: 124, 92, 255;
+		--accent-muted: 180, 165, 255;
+		--accent-gradient: linear-gradient(120deg, rgb(124, 92, 255), rgb(56, 189, 248));
+		--surface: #0c0d12;
+		--surface-elevated: #14161f;
+		--border: rgba(255, 255, 255, 0.08);
+		--text: #f4f4f5;
+		--text-muted: #a1a1aa;
+	}
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
 	}
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+		font-family:
+			system-ui,
+			-apple-system,
+			'Segoe UI',
+			Roboto,
+			Ubuntu,
+			sans-serif;
+		background: var(--surface);
+		color: var(--text);
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		min-height: 100vh;
+		line-height: 1.6;
+	}
+	.skip-link {
+		position: absolute;
+		left: -999px;
+		top: 0;
+		padding: 0.75rem 1rem;
+		background: rgb(var(--accent));
+		color: #fff;
+		text-decoration: none;
+		border-radius: 0 0 8px 0;
+		z-index: 100;
+		font-weight: 600;
+	}
+	.skip-link:focus {
+		left: 0;
+		outline: 2px solid #fff;
+		outline-offset: 2px;
 	}
 	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+		font-family: ui-monospace, Menlo, Monaco, monospace;
+		font-size: 0.9em;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
 	}
 </style>
