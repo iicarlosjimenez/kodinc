@@ -26,7 +26,7 @@ const nav = [
 					nav.map(({ href, label }) => (
 						<li>
 							<a
-								href={href}
+								href={href.startsWith('#') ? `/${href}` : href}
 								class="text-sm font-medium text-muted no-underline hover:text-text hover:underline focus-visible:text-text focus-visible:underline"
 							>
 								{label}
@@ -38,7 +38,7 @@ const nav = [
 		</nav>
 		<a
 			class="inline-flex shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#b4ffa8] to-accent-muted px-4 py-2 text-sm font-bold text-[#0c0d12] no-underline transition duration-150 hover:scale-[1.03] hover:brightness-105 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-			href="#contacto"
+			href="/#contacto"
 		>
 			Agenda una demo
 		</a>
