@@ -2,6 +2,7 @@
 
 @theme {
 	--font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, sans-serif;
+	--font-heading: 'Iceland', system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, sans-serif;
 
 	--color-surface: #0c0d12;
 	--color-surface-elevated: #14161f;
